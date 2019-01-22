@@ -15,38 +15,38 @@ import (
 )
 
 type Activities_taskRow struct {
-     INT_ID   int32   `colname:"INT_ID"`
- INT_ACTIVITIES_ID   int32   `colname:"INT_ACTIVITIES_ID"`
- INT_INT_PAGE   int32   `colname:"INT_INT_PAGE"`
- INT_TYPE   int32   `colname:"INT_TYPE"`
- STR_CONST_DES   string   `colname:"STR_CONST_DES"`
- STR_NAME   string   `colname:"STR_NAME"`
- STR_DESCRIPTION   string   `colname:"STR_DESCRIPTION"`
- INT_PARM_1   int32   `colname:"INT_PARM_1"`
- INT_PARM_2   int32   `colname:"INT_PARM_2"`
- INT_RANGE_2   int32   `colname:"INT_RANGE_2"`
- INT_END_VALUE   int32   `colname:"INT_END_VALUE"`
- INT_REWARD_MODE   int32   `colname:"INT_REWARD_MODE"`
- INT_MAX_RECEIVE_TIMES   int32   `colname:"INT_MAX_RECEIVE_TIMES"`
- INT_AUTO_AWARD_ITEM_TYPY_1   int32   `colname:"INT_AUTO_AWARD_ITEM_TYPY_1"`
- INT_AUTO_AWARD_ITEM_COUNT_1   int32   `colname:"INT_AUTO_AWARD_ITEM_COUNT_1"`
- INT_AUTO_AWARD_ITEM_TYPY_2   int32   `colname:"INT_AUTO_AWARD_ITEM_TYPY_2"`
- INT_AUTO_AWARD_ITEM_COUNT_2   int32   `colname:"INT_AUTO_AWARD_ITEM_COUNT_2"`
- INT_REWARD_1   int32   `colname:"INT_REWARD_1"`
- INT_COUNT_1   int32   `colname:"INT_COUNT_1"`
- INT_REWARD_2   int32   `colname:"INT_REWARD_2"`
- INT_COUNT_2   int32   `colname:"INT_COUNT_2"`
- INT_REWARD_3   int32   `colname:"INT_REWARD_3"`
- INT_COUNT_3   int32   `colname:"INT_COUNT_3"`
- INT_REWARD_4   int32   `colname:"INT_REWARD_4"`
- INT_COUNT_4   int32   `colname:"INT_COUNT_4"`
- INT_REWARD_5   int32   `colname:"INT_REWARD_5"`
- INT_COUNT_5   int32   `colname:"INT_COUNT_5"`
- INT_MIN_VALUE   int32   `colname:"INT_MIN_VALUE"`
- INT_MAX_VALUE   int32   `colname:"INT_MAX_VALUE"`
- INT_SORT_INDEX   int32   `colname:"INT_SORT_INDEX"`
- INT_VIP_LIMIT   int32   `colname:"INT_VIP_LIMIT"`
- INT_DISCOUNT_RATES   int32   `colname:"INT_DISCOUNT_RATES"`
+     6.0000999e7   int32   `colname:"6.0000999e7"`
+ 100000.0   int32   `colname:"100000.0"`
+ 0.0   int32   `colname:"0.0"`
+ 1033.0   int32   `colname:"1033.0"`
+ 首次充值次数，12121212   string   `colname:"首次充值次数，12121212"`
+ 首次充值   string   `colname:"首次充值"`
+ 首次充值   string   `colname:"首次充值"`
+ 0.0   int32   `colname:"0.0"`
+ 0.0   int32   `colname:"0.0"`
+ 0.0   int32   `colname:"0.0"`
+ 1.0   int32   `colname:"1.0"`
+ 2002.0   int32   `colname:"2002.0"`
+ 1.0   int32   `colname:"1.0"`
+ 0.0   int32   `colname:"0.0"`
+ 0.0   int32   `colname:"0.0"`
+ 0.0   int32   `colname:"0.0"`
+ 0.0   int32   `colname:"0.0"`
+ 270059.0   int32   `colname:"270059.0"`
+ 1.0   int32   `colname:"1.0"`
+ 190002.0   int32   `colname:"190002.0"`
+ 2.0   int32   `colname:"2.0"`
+ 200058.0   int32   `colname:"200058.0"`
+ 1.0   int32   `colname:"1.0"`
+ 10009.0   int32   `colname:"10009.0"`
+ 50.0   int32   `colname:"50.0"`
+ 300001.0   int32   `colname:"300001.0"`
+ 2.0   int32   `colname:"2.0"`
+ 0.0   int32   `colname:"0.0"`
+ 0.0   int32   `colname:"0.0"`
+ 1.0   int32   `colname:"1.0"`
+ 0.0   int32   `colname:"0.0"`
+ 0.0   int32   `colname:"0.0"`
 
 }
 
@@ -99,12 +99,12 @@ func (this *Activities_taskTable) Row(i int) (row Activities_taskRow, ok bool) {
 	return this.rows[i], true
 }
 
-func (this *Activities_taskTable) RowByINT_ID(INT_ID int32) (row Activities_taskRow,rowIndex int, ok bool) {
+func (this *Activities_taskTable) RowBy6.0000999e7(6.0000999e7 string) (row Activities_taskRow,rowIndex int, ok bool) {
 	this.RLock()
 	defer this.RUnlock()
 
 	for i := 0; i < len(this.rows); i++ {
-		if this.rows[i].INT_ID == INT_ID {
+		if this.rows[i].6.0000999e7 == 6.0000999e7 {
 			return this.rows[i], i,true
 		}
 	}
@@ -288,69 +288,69 @@ func (this *Activities_taskTable) valueByField(row int,colname string) (interfac
 
 func (this *Activities_taskTable) fieldByName(colname string) (int,bool) {
     switch colname {
-         case "INT_ID" :
+         case "6.0000999e7" :
  return 0,true
- case "INT_ACTIVITIES_ID" :
+ case "100000.0" :
  return 1,true
- case "INT_INT_PAGE" :
+ case "0.0" :
  return 2,true
- case "INT_TYPE" :
+ case "1033.0" :
  return 3,true
- case "STR_CONST_DES" :
+ case "首次充值次数，12121212" :
  return 4,true
- case "STR_NAME" :
+ case "首次充值" :
  return 5,true
- case "STR_DESCRIPTION" :
+ case "首次充值" :
  return 6,true
- case "INT_PARM_1" :
+ case "0.0" :
  return 7,true
- case "INT_PARM_2" :
+ case "0.0" :
  return 8,true
- case "INT_RANGE_2" :
+ case "0.0" :
  return 9,true
- case "INT_END_VALUE" :
+ case "1.0" :
  return 10,true
- case "INT_REWARD_MODE" :
+ case "2002.0" :
  return 11,true
- case "INT_MAX_RECEIVE_TIMES" :
+ case "1.0" :
  return 12,true
- case "INT_AUTO_AWARD_ITEM_TYPY_1" :
+ case "0.0" :
  return 13,true
- case "INT_AUTO_AWARD_ITEM_COUNT_1" :
+ case "0.0" :
  return 14,true
- case "INT_AUTO_AWARD_ITEM_TYPY_2" :
+ case "0.0" :
  return 15,true
- case "INT_AUTO_AWARD_ITEM_COUNT_2" :
+ case "0.0" :
  return 16,true
- case "INT_REWARD_1" :
+ case "270059.0" :
  return 17,true
- case "INT_COUNT_1" :
+ case "1.0" :
  return 18,true
- case "INT_REWARD_2" :
+ case "190002.0" :
  return 19,true
- case "INT_COUNT_2" :
+ case "2.0" :
  return 20,true
- case "INT_REWARD_3" :
+ case "200058.0" :
  return 21,true
- case "INT_COUNT_3" :
+ case "1.0" :
  return 22,true
- case "INT_REWARD_4" :
+ case "10009.0" :
  return 23,true
- case "INT_COUNT_4" :
+ case "50.0" :
  return 24,true
- case "INT_REWARD_5" :
+ case "300001.0" :
  return 25,true
- case "INT_COUNT_5" :
+ case "2.0" :
  return 26,true
- case "INT_MIN_VALUE" :
+ case "0.0" :
  return 27,true
- case "INT_MAX_VALUE" :
+ case "0.0" :
  return 28,true
- case "INT_SORT_INDEX" :
+ case "1.0" :
  return 29,true
- case "INT_VIP_LIMIT" :
+ case "0.0" :
  return 30,true
- case "INT_DISCOUNT_RATES" :
+ case "0.0" :
  return 31,true
 
         default:
@@ -360,69 +360,69 @@ func (this *Activities_taskTable) fieldByName(colname string) (int,bool) {
 
 func (this *Activities_taskTable) typeByName(colname string) (reflect.Kind, bool) {
 	switch colname {
-	 case "INT_ID" :
+	 case "6.0000999e7" :
  return reflect.int32,true
- case "INT_ACTIVITIES_ID" :
+ case "100000.0" :
  return reflect.int32,true
- case "INT_INT_PAGE" :
+ case "0.0" :
  return reflect.int32,true
- case "INT_TYPE" :
+ case "1033.0" :
  return reflect.int32,true
- case "STR_CONST_DES" :
+ case "首次充值次数，12121212" :
  return reflect.string,true
- case "STR_NAME" :
+ case "首次充值" :
  return reflect.string,true
- case "STR_DESCRIPTION" :
+ case "首次充值" :
  return reflect.string,true
- case "INT_PARM_1" :
+ case "0.0" :
  return reflect.int32,true
- case "INT_PARM_2" :
+ case "0.0" :
  return reflect.int32,true
- case "INT_RANGE_2" :
+ case "0.0" :
  return reflect.int32,true
- case "INT_END_VALUE" :
+ case "1.0" :
  return reflect.int32,true
- case "INT_REWARD_MODE" :
+ case "2002.0" :
  return reflect.int32,true
- case "INT_MAX_RECEIVE_TIMES" :
+ case "1.0" :
  return reflect.int32,true
- case "INT_AUTO_AWARD_ITEM_TYPY_1" :
+ case "0.0" :
  return reflect.int32,true
- case "INT_AUTO_AWARD_ITEM_COUNT_1" :
+ case "0.0" :
  return reflect.int32,true
- case "INT_AUTO_AWARD_ITEM_TYPY_2" :
+ case "0.0" :
  return reflect.int32,true
- case "INT_AUTO_AWARD_ITEM_COUNT_2" :
+ case "0.0" :
  return reflect.int32,true
- case "INT_REWARD_1" :
+ case "270059.0" :
  return reflect.int32,true
- case "INT_COUNT_1" :
+ case "1.0" :
  return reflect.int32,true
- case "INT_REWARD_2" :
+ case "190002.0" :
  return reflect.int32,true
- case "INT_COUNT_2" :
+ case "2.0" :
  return reflect.int32,true
- case "INT_REWARD_3" :
+ case "200058.0" :
  return reflect.int32,true
- case "INT_COUNT_3" :
+ case "1.0" :
  return reflect.int32,true
- case "INT_REWARD_4" :
+ case "10009.0" :
  return reflect.int32,true
- case "INT_COUNT_4" :
+ case "50.0" :
  return reflect.int32,true
- case "INT_REWARD_5" :
+ case "300001.0" :
  return reflect.int32,true
- case "INT_COUNT_5" :
+ case "2.0" :
  return reflect.int32,true
- case "INT_MIN_VALUE" :
+ case "0.0" :
  return reflect.int32,true
- case "INT_MAX_VALUE" :
+ case "0.0" :
  return reflect.int32,true
- case "INT_SORT_INDEX" :
+ case "1.0" :
  return reflect.int32,true
- case "INT_VIP_LIMIT" :
+ case "0.0" :
  return reflect.int32,true
- case "INT_DISCOUNT_RATES" :
+ case "0.0" :
  return reflect.int32,true
 
     default:
@@ -437,63 +437,63 @@ func (this *Activities_taskTable) intFieldValue(fieldIndex, row int) (data int32
 
     switch fieldIndex {
      case 0 :
- return this.rows[row].INT_ID,true
+ return this.rows[row].6.0000999e7,true
  case 1 :
- return this.rows[row].INT_ACTIVITIES_ID,true
+ return this.rows[row].100000.0,true
  case 2 :
- return this.rows[row].INT_INT_PAGE,true
+ return this.rows[row].0.0,true
  case 3 :
- return this.rows[row].INT_TYPE,true
+ return this.rows[row].1033.0,true
  case 7 :
- return this.rows[row].INT_PARM_1,true
+ return this.rows[row].0.0,true
  case 8 :
- return this.rows[row].INT_PARM_2,true
+ return this.rows[row].0.0,true
  case 9 :
- return this.rows[row].INT_RANGE_2,true
+ return this.rows[row].0.0,true
  case 10 :
- return this.rows[row].INT_END_VALUE,true
+ return this.rows[row].1.0,true
  case 11 :
- return this.rows[row].INT_REWARD_MODE,true
+ return this.rows[row].2002.0,true
  case 12 :
- return this.rows[row].INT_MAX_RECEIVE_TIMES,true
+ return this.rows[row].1.0,true
  case 13 :
- return this.rows[row].INT_AUTO_AWARD_ITEM_TYPY_1,true
+ return this.rows[row].0.0,true
  case 14 :
- return this.rows[row].INT_AUTO_AWARD_ITEM_COUNT_1,true
+ return this.rows[row].0.0,true
  case 15 :
- return this.rows[row].INT_AUTO_AWARD_ITEM_TYPY_2,true
+ return this.rows[row].0.0,true
  case 16 :
- return this.rows[row].INT_AUTO_AWARD_ITEM_COUNT_2,true
+ return this.rows[row].0.0,true
  case 17 :
- return this.rows[row].INT_REWARD_1,true
+ return this.rows[row].270059.0,true
  case 18 :
- return this.rows[row].INT_COUNT_1,true
+ return this.rows[row].1.0,true
  case 19 :
- return this.rows[row].INT_REWARD_2,true
+ return this.rows[row].190002.0,true
  case 20 :
- return this.rows[row].INT_COUNT_2,true
+ return this.rows[row].2.0,true
  case 21 :
- return this.rows[row].INT_REWARD_3,true
+ return this.rows[row].200058.0,true
  case 22 :
- return this.rows[row].INT_COUNT_3,true
+ return this.rows[row].1.0,true
  case 23 :
- return this.rows[row].INT_REWARD_4,true
+ return this.rows[row].10009.0,true
  case 24 :
- return this.rows[row].INT_COUNT_4,true
+ return this.rows[row].50.0,true
  case 25 :
- return this.rows[row].INT_REWARD_5,true
+ return this.rows[row].300001.0,true
  case 26 :
- return this.rows[row].INT_COUNT_5,true
+ return this.rows[row].2.0,true
  case 27 :
- return this.rows[row].INT_MIN_VALUE,true
+ return this.rows[row].0.0,true
  case 28 :
- return this.rows[row].INT_MAX_VALUE,true
+ return this.rows[row].0.0,true
  case 29 :
- return this.rows[row].INT_SORT_INDEX,true
+ return this.rows[row].1.0,true
  case 30 :
- return this.rows[row].INT_VIP_LIMIT,true
+ return this.rows[row].0.0,true
  case 31 :
- return this.rows[row].INT_DISCOUNT_RATES,true
+ return this.rows[row].0.0,true
 
     default:
         return
@@ -507,11 +507,11 @@ func (this *Activities_taskTable) strFieldValue(fieldIndex, row int) (data strin
 
     switch fieldIndex {
      case 4 :
- return this.rows[row].STR_CONST_DES,true
+ return this.rows[row].首次充值次数，12121212,true
  case 5 :
- return this.rows[row].STR_NAME,true
+ return this.rows[row].首次充值,true
  case 6 :
- return this.rows[row].STR_DESCRIPTION,true
+ return this.rows[row].首次充值,true
 
     default:
         return
