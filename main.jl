@@ -6,8 +6,8 @@ xls_dir="./xls"
 csv_dir="./csv"
 go_dir="./go"
 
+
 allsheets=[]; #所有文件的所有表格
-notReplace=[] #没有替换的坐标
 ignoreCols = [
     "STR_CEHUA",
     "STR_TYPE",
@@ -25,8 +25,8 @@ ignoreCols = [
 ignoreFiles = ["localization", "severslocalization","HeroIconRule","const"]
 ignoreSheets = ["Sheet1"]
 
-constTable="./xls/const.xlsx"
 
+constTable="./xls/const.xlsx"
 
 
 # 读取const列表
@@ -37,6 +37,7 @@ function constdata()
     ptable = DataFrame(data);
     return ptable
 end
+
 
 # 判断类型
 function valuetype(value)
@@ -64,7 +65,8 @@ function delcols(data)
     return temp
 end
 
-# 替换变量
+
+# 替换变量，对没存在const的变量进行报错
 function replace_variate(data,file_info)
     nrows, ncols = size(data);
     intcols=[];
@@ -100,8 +102,10 @@ function replace_variate(data,file_info)
         end
         if !isShowConst
             #错误提示  变量在const中找不到对应的值
-            println("Table Check : error ceil find! file [$(file_info[1])] sheet [$(file_info[2])] pos( $row,$col ) ceilName $(data[1,col]) rightType [] ceilType [] ceilValue [$(data[row,col])]");
+            push!(unpassNum,1)
             push!(notReplace,(row,col))
+            println("Table Check : error ceil find! file [$(file_info[1])] sheet [$(file_info[2])] pos( $row,$col ) ceilName $(data[1,col]) rightType [] ceilType [] ceilValue [$(data[row,col])]");
+            
             continue;
         end   
     end
@@ -109,8 +113,7 @@ function replace_variate(data,file_info)
 end
 
 
-
-#判断一列数据类型
+#判断一列数据类型，对不符合类型的数据进行报错
 function judge_coltype(data,file_info)
     nrows, ncols = size(data);
     for col in 1:ncols
@@ -119,6 +122,8 @@ function judge_coltype(data,file_info)
             if((row,col) in notReplace) continue end;
             if(valuetype(data[row,col])!=coltype)
                 #错误提示 对与第一行不同数据类型的进行报错
+                push!(unpassNum,1);
+                push!(notReplace,(row,col))
                 println("Table Check : error ceil find! file [$(file_info[1])] sheet [$(file_info[2])] pos( $row,$col ) ceilName $(data[1,col]) rightType [] ceilType [] ceilValue [$(data[row,col])]");
             end
         end
@@ -126,9 +131,26 @@ function judge_coltype(data,file_info)
 end
 
 
+# 判断是否有分隔符
+function judge_hasbreak(data,file_info)
+    nrows, ncols = size(data);
+    for col in 1:ncols
+        for row in 2:nrows
+            if((row,col) in notReplace) continue end;
+            if(occursin(",", "$(data[row,col])"))
+                #错误提示 对与第一行不同数据类型的进行报错
+                push!(unpassNum,1);
+                push!(notReplace,(row,col))
+                println("Table Check : error ceil find! file [$(file_info[1])] sheet [$(file_info[2])] pos( $row,$col ) ceilName $(data[1,col]) rightType [] ceilType [] ceilValue [$(data[row,col])]");
+            end
+        end
+    end
+end
+
+
+# 转化为csv文件
 function to_csv(data,sheet)
     nrows, ncols = size(data)
-    
     for col in 1:ncols
         oldname=names(data)[col];
         newname=Symbol(data[1,col]);
@@ -144,8 +166,7 @@ function to_csv(data,sheet)
 end
 
 
-
-#转换为go文件 获取替代数据
+#转换为go文件时获取替代数据
 function replace_value(data)
     rowType="";
     fieldByName="";
@@ -172,8 +193,7 @@ function replace_value(data)
             ,fltfieldValue="$(fltfieldValue)",strfieldValue="$(strfieldValue)");
 end
 
-
-
+#转为go文件
 function to_go(data,sheet)
     gofile="$go_dir/$sheet.go";
     read(`touch $gofile`);
@@ -229,19 +249,28 @@ function readsheet(file)
         
         file_info=(file,sheets[i])
 
+        global notReplace=[]; #没有被替换变量的坐标
+        global unpassNum=[]; #表格检查是否通过
+
         # 替换变量,变量不存在进行报错
         tableData=replace_variate(tableData,file_info)
 
         # 判断数据类型，对数据类型不同的进行报错
         judge_coltype(tableData,file_info)
 
+        judge_hasbreak(tableData,file_info)
+
+        if length(unpassNum)>0
+            println("file $file sheet $(sheets[i]) faild to csv ! please check!")
+            continue;
+        end
         # to_csv
         to_csv(tableData,sheets[i]);
 
         # to_go
         to_go(tableData,sheets[i]);
     end
-    println("$file's sheets have converted successfully")
+    println("$file have converted successfully")
 end
 
 
@@ -267,7 +296,6 @@ function main()
     end
     # run(`gofmt -w ./go/*.go`)
 end
-
 
 main()
 
